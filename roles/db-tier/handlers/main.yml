@@ -1,2 +1,19 @@
 ---
 # handlers file for db-tier
+
+- name: initialize postgres
+  command: postgresql-setup initdb
+  args:
+    creates: /var/lib/pgsql/data/postgres
+
+- name: initialize postgres some more
+  command: chkconfig postgresql on
+  args:
+    creates: /var/lib/pgsql/data/postgres
+
+- name: start postgres
+  service:
+    name: postgresql
+    state: started
+    enabled: yes
+...
