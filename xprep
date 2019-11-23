@@ -1,0 +1,16 @@
+export TOWER_GUID=e949
+export OSP_GUID=c68e
+export OPENTLC_LOGIN=rnozaki-redhat.com
+export OPENTLC_PASSWORD=Th3Un1v3rs3L0v3sM3!
+export GITHUB_REPO=https://github.com/rnozaki/ansible_advance_homework.git
+export JQ_REPO_BASE=http://www.opentlc.com/download/ansible_bootcamp
+export REGION=us-east-1
+export RH_MAIL_ID=rnozaki@redhat.com
+
+#ansible-playbook site-config-tower.yml -e tower_GUID=${TOWER_GUID} -e osp_GUID=${OSP_GUID} -e opentlc_login=${OPENTLC_LOGIN} -e path_to_opentlc_key=/root/.ssh/id_rsa -e param_repo_base=${JQ_REPO_BASE} -e opentlc_password=${OPENTLC_PASSWORD} -e REGION_NAME=${REGION} -e EMAIL=${RH_MAIL_ID} -e github_repo=${GITHUB_REPO} 
+
+# ansible-playbook site-setup-workstation.yml -e OSP_GUID=${OSP_GUID} --private-key=/root/.ssh/id_rsa -u rnozaki-redhat.com
+
+export ANSIBLE_ADVANCE_GUID=a78a
+ansible-playbook grading-script.yml -e OSP_GUID=${OSP_GUID} -e ANSIBLE_ADVANCE_GUID=${ANSIBLE_ADVANCE_GUID}
+#ansible-playbook xgrading-script.yml -e OSP_GUID=${OSP_GUID} -e ANSIBLE_ADVANCE_GUID=${ANSIBLE_ADVANCE_GUID}

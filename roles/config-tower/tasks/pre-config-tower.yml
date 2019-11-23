@@ -13,7 +13,6 @@
     src: "{{path_to_opentlc_key}}"
     dest: /root/secret.pem
 
-
 - name: Copy inventory vars
   copy:
     src: inventory_vars.json

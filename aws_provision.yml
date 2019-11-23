@@ -3,27 +3,27 @@
   become: true
   gather_facts: false
   tasks:
-    - name: create bin directory
+    - name: Create bin directory
       file:
         path: /root/bin
         state: directory
-    - name: get script common.sh
+    - name: Get script common.sh
       get_url:
         url: "{{ param_repo_base }}/scripts/common.sh"
         dest: /root/common.sh
         mode: 0755
 
-    - name: get script jq
+    - name: Get script jq
       get_url: 
         url: "{{ param_repo_base }}/scripts/jq-linux64"
         dest: /root/bin/jq
         mode: 0755
-    - name: get script order_svc.sh
+    - name: Get script order_svc.sh
       get_url:
         url: "{{ param_repo_base }}/scripts/order_svc.sh"
         dest: /root/order_svc.sh
         mode: 0755
-    - name: create credentials
+    - name: Create credentials
       copy:
         content: |
           export username={{ param_user }}
@@ -33,15 +33,14 @@
         mode: 0755
 
     # Fix the existing shell scripts to reference jq command with bin/jq
-    - name: fix scripts
+    - name: Fix scripts
       shell: "sed -i 's/ jq/ bin\\/jq/g' {{ item }}"
       with_items:
         - /root/common.sh
         - /root/order_svc.sh
 
     # Using this script will always deploy environments in the us-east-1 region.
-    # TODO: this shell task is not working yet!
-    - name: order service on opentlc
+    - name: Order service on opentlc
       shell: source /root/credential.rc; ./order_svc.sh -y -c 'OPENTLC Automation' -i 'Ansible Advanced - Three Tier App' -t 1 -d 'dialog_expiration=7;region=na;nodes=1;dialog_runtime=8'
       args:
         chdir: /root

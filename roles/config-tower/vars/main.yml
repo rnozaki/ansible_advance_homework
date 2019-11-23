@@ -41,4 +41,3 @@ user_cred_path: "/root/.ssh/openstack.pem"
 user_name: admin 
 vault_name: yum_repo_vault
 workflow_template_name: cicd_workflow
-

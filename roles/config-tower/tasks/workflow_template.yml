@@ -10,4 +10,3 @@
 - name: Create workflow using schema
   command: |
     tower-cli workflow schema {{workflow_template_name}} @/root/workflow.yml
-

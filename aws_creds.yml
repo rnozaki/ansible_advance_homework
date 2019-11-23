@@ -56,5 +56,3 @@
       job_type: run
       playbook: site-smoketest-aws.yml
       project: "Homework Assignment"
-
-    

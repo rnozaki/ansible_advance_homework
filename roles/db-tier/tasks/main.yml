@@ -1,7 +1,7 @@
 ---
 # tasks file for db-tier
 
-- name: install postgres
+- name: Install postgres
   yum:
     name: "{{ packages }}"
     state: latest
